@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit "{{ takeout['rest_name'] }}"{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="title">Takeout Restaurant Name</label>
+    <input name="title" id="title"
+      value="{{ request.form['rest_name'] or takeout['rest_name'] }}" required>
+    <label for="takeoutOrderDate">Takeout Order Date</label>
+    <input name="takeoutOrderDate" id="takeoutOrderDate"
+      value="{{ request.form['takeoutOrderDate'] or takeout['order_date'] }}" required>
+    <label for="body">Takeout Restaurant Address</label>
+    <textarea name="body" id="body">{{ request.form['rest_address'] or takeout['rest_address'] }}</textarea>
+    <input type="submit" value="Save">
+  </form>
+  <hr>
+  <form action="{{ url_for('takeout.delete', id=takeout['id']) }}" method="post">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+  </form>
+{% endblock %}

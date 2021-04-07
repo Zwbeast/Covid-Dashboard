@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+  {% block header %}
+  <!--
+    {% if g.user %}
+      <h1>{% block title %}Trips{% endblock %}</h1>
+      <a class="action" href="{{ url_for('trip.create') }}">New</a>
+    {% endif %}-->
+    
+  {% endblock %}
+
+{% block content %}
+  <!--symptom render-->
+  <h1>Symptoms</h1>
+  <a class="action" href="{{ url_for('symptom.create') }}">New symptom</a>
+  {% for symptom in symptoms %}
+    {% if g.user['id'] == symptom['author_id'] %}
+        <hr>
+        <article class="symptom">
+        <header>
+            <div>
+            
+            <div class="about">created on {{ symptom['created'].strftime('%Y-%m-%d') }}</div>
+            </div>
+            <a class="action" href="{{ url_for('symptom.update', id=symptom['id']) }}">Edit</a>
+        </header>
+            <p>Symptom: {{ symptom['symptom_name'] }}</p>
+            <p class="body">Start Date: {{ symptom['s_date'] }}</p>
+            <p class="body">Severity: {{ symptom['severity'] }}</p>
+        </article>
+        <hr>
+    {% endif %}
+    <!--{% if not loop.last %}
+    {% endif %} -->
+  {% endfor %}
+{% endblock %}

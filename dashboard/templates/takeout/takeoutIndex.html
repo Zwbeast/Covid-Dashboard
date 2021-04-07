@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+  {% block header %}
+  <!--
+    {% if g.user %}
+      <h1>{% block title %}Trips{% endblock %}</h1>
+      <a class="action" href="{{ url_for('trip.create') }}">New</a>
+    {% endif %}-->
+    
+  {% endblock %}
+
+{% block content %}
+  <!--takrout render-->
+  <h1>Takeouts</h1>
+  <a class="action" href="https://auth.uber.com/login/?breeze_local_zone=dca11&next_url=https%3A%2F%2Fwww.ubereats.com%2Flogin-redirect%2F%3Fmarketing_vistor_id%3Dcfcfa52e-0635-483d-bec3-46afed804ee5%26redirect%3D%252F&state=zlNzVuc_4TkkGNU72hJCoZf-V_nMBSowYLelVl9ObIE%3D">Uber eats</a>
+  <a class="action" href="{{ url_for('takeout.create') }}">New takeout</a>
+  {% for takeout in takeouts %}
+    {% if g.user['id'] == takeout['author_id'] %}
+        <hr>
+        <article class="takeout">
+        <header>
+            <div>
+            
+            <div class="about">created on {{ takeout['created'].strftime('%Y-%m-%d') }}</div>
+            </div>
+            <a class="action" href="{{ url_for('takeout.update', id=takeout['id']) }}">Edit</a>
+        </header>
+            <p>Take out Restaurant Name: {{ takeout['rest_name'] }}</p>
+            <p class="body">Order Date: {{ takeout['order_date'] }}</p>
+            <p class="body">Restaurant Address: {{ takeout['rest_address'] }}</p>
+        </article>
+        <hr>
+    {% endif %}
+    <!--{% if not loop.last %}
+    {% endif %} -->
+  {% endfor %}
+{% endblock %}

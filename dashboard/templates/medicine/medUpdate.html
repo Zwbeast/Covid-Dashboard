@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit "{{ medicine['med_name'] }}"{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="title">Medicine Name</label>
+    <input name="title" id="title"
+      value="{{ request.form['med_name'] or medicine['med_name'] }}" required>
+    <label for="body">Direction</label>
+    <textarea name="body" id="body">{{ request.form['direction'] or medicine['direction'] }}</textarea>
+    <input type="submit" value="Save">
+  </form>
+  <hr>
+  <form action="{{ url_for('medicine.delete', id=medicine['id']) }}" method="post">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+  </form>
+{% endblock %}

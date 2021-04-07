@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit Trip{% endblock %}</h1>
+  
+{% endblock %}
+  
+
+{% block content %}
+  <form method="post">
+    <label for="title">Trip Destination</label>
+    <input name="title" id="title"
+      value="{{ request.form['destination'] or trip['destination'] }}">
+    <label for="tripStartDate">Trip Start Date</label>
+    <input name="tripStartDate" id="tripStartDate" 
+      value="{{ request.form['tripStartDate'] or trip['s_date'] }}" required>
+    <label for="tripEndDate">Trip End Date</label>
+    <input name="tripEndDate" id="tripEndDate" 
+      value="{{ request.form['tripEndDate'] or trip['e_date'] }}" required>
+    <label for="body">People with</label>
+    <textarea name="body" id="body">{{ request.form['people'] or trip['people'] }}</textarea>
+    <input type="submit" value="Save">
+  </form>
+  <hr>
+  <form action="{{ url_for('trip.delete', id=trip['id']) }}" method="post">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+  </form>
+{% endblock %}

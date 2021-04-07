@@ -1,0 +1,90 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - COVID-dashboard</title>
+<!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">-->
+
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!--<title>jQuery UI 日期选择器（Datepicker） - 默认功能</title>-->
+  <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+  <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="jqueryui/style.css">
+
+  <style>
+  /* Style the top navigation bar */
+  .topnav {
+    overflow: hidden;
+    background-color: #1E90FF;
+  }
+
+  /* Style the topnav links */
+  .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  /* Change color on hover */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  
+  </style>
+  
+</head>
+
+<div class="topnav">
+  <a class="navbar-brand" style="font-size: x-large" href="http://127.0.0.1:5000/">Personal COVID Dashboard</a>
+    {% if g.user %}
+      <a href="{{ url_for('blog.index') }}">Home</a>
+      <a href="https://www.cdc.gov/">CDC</a>
+      <a href="{{ url_for('news.index') }}">News</a>
+      <a href="{{ url_for('medicine.index') }}">Medicines</a>
+      <a href="{{ url_for('trip.index') }}">Trips</a>
+      <a href="{{ url_for('takeout.index') }}">Takeouts</a>
+      <a href="{{ url_for('doctor.index') }}">Doctor Visits</a>
+      <a href="{{ url_for('symptom.index') }}">Symptoms</a>
+      <!--<span>{{ g.user['username'] }}</span>-->
+      <a href="{{ url_for('auth.logout') }}" style="padding-left: 300px;">Log Out</a>
+    {% else %}
+    <div class="auth">
+      <a href="{{ url_for('auth.register') }}" style="padding-top: 22px;">Register</a>
+      <a href="{{ url_for('auth.login') }}" style="padding-top: 22px;">Log In</a>
+    </div>
+    {% endif %}
+  </ul>
+</div>
+
+  <script>
+  $(()=> $( "#tripStartDate" ).datepicker());
+  $(()=> $( "#tripEndDate" ).datepicker());
+  $(()=> $( "#takeoutOrderDate" ).datepicker());
+  $(()=> $( "#dDate" ).datepicker());
+  $(()=> $( "#symptomStartDate" ).datepicker());
+  </script>
+{% if not g.user %}
+  <img src="https://i.ibb.co/xSd7MWD/43617172-thumb5-690x400.jpg" alt="43617172-thumb5-690x400" width=1500>
+<section class="content">
+{% endif %}
+<!--
+  {% if g.user %}
+    <a class="action" href="{{ url_for('blog.create') }}">New post</a>
+  {% endif %}-->
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  
+  {% block content %}{% endblock %}
+</section>

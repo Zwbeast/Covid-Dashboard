@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+  {% block header %}
+  <!--
+    {% if g.user %}
+      <h1>{% block title %}Medicines{% endblock %}</h1>
+      <a class="action" href="{{ url_for('medicine.create') }}">New</a>
+    {% endif %}-->
+    
+  {% endblock %}
+
+{% block content %}
+  <!--medicine render-->
+  <h1>Medicines</h1>
+  <a class="action" href="{{ url_for('medicine.create') }}">New medicine</a>
+  {% for medicine in medicines %}
+    {% if g.user['id'] == medicine['author_id'] %}
+        <hr>
+        <article class="medicine">
+        <header>
+            <div>
+            
+            <div class="about">created on {{ medicine['created'].strftime('%Y-%m-%d') }}</div>
+            </div>
+            <a class="action" href="{{ url_for('medicine.update', id=medicine['id']) }}">Edit</a>
+        </header>
+            <p>Medicine Name: {{ medicine['med_name'] }}</p>
+            <p class="body">Direction: {{  medicine['direction'] }}</p>
+        </article>
+        <hr>
+    {% endif %}
+    <!--{% if not loop.last %}
+    {% endif %} -->
+  {% endfor %}
+{% endblock %}

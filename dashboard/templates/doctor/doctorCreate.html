@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New Doctor Visits{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="title">Doctor Visit Type</label>
+    <input name="title" id="title" value="{{ request.form['title'] }}" required>
+    <label for="dDate">Takeout Order Date</label>
+    <input name="dDate" id="dDate" value="{{ request.form['dDate'] }}" required>
+    <label for="body">Doctor Visit Address</label>
+    <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+  {% block header %}
+  <!--
+    {% if g.user %}
+      <h1>{% block title %}Trips{% endblock %}</h1>
+      <a class="action" href="{{ url_for('trip.create') }}">New</a>
+    {% endif %}-->
+    
+  {% endblock %}
+
+{% block content %}
+  <!--doctor visit render-->
+  <h1>Dcotor Visits</h1>
+  <a class="action" href="{{ url_for('doctor.create') }}">New doctor visit</a>
+  {% for doctor in doctors %}
+    {% if g.user['id'] == doctor['author_id'] %}
+        <hr>
+        <article class="doctor">
+        <header>
+            <div>
+              <div class="about">created on {{ doctor['created'].strftime('%Y-%m-%d') }}</div>
+            </div>
+            <a class="action" href="{{ url_for('doctor.update', id=doctor['id']) }}">Edit</a>
+        </header>
+            <p>Doctor Visit Type: {{ doctor['doc_type'] }}</p>
+            <p class="body">Dcotor Visit Date: {{ doctor['doc_date'] }}</p>
+            <p class="body">Doctor Visit Address: {{ doctor['doc_address'] }}</p>
+        </article>
+        <hr>
+    {% endif %}
+    <!--{% if not loop.last %}
+    {% endif %} -->
+  {% endfor %}
+{% endblock %}

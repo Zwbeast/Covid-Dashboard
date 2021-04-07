@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit "{{ news['people'] }}"{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="title">news Destination</label>
+    <input name="title" id="title"
+      value="{{ request.form['people'] or news['people'] }}" required>
+    <label for="body">Covid Test Result</label>
+    <textarea name="body" id="body">{{ request.form['covid_test'] or news['covid_test'] }}</textarea>
+    <label for="title">Is Closely Contacted: </label>
+    <input name="closeContact" id="closeContact"
+      value="{{ request.form['closeContact'] or news['close_contact'] }}" required>
+    <input type="submit" value="Save">
+  </form>
+  <hr>
+  <form action="{{ url_for('news.delete', id=news['id']) }}" method="post">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+  </form>
+{% endblock %}

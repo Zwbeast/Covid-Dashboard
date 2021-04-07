@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit Symptom{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="title">Symptom</label>
+    <input name="title" id="title"
+      value="{{ request.form['symptom_name'] or symptom['symptom_name'] }}" required>
+    <label for="symptomStartDate">Symptom Start Date</label>
+    <input name="symptomStartDate" id="symptomStartDate"
+      value="{{ request.form['symptomStartDate'] or symptom['symptomStartDate'] }}" required>
+    <label for="body">Symptom Severity</label>
+    <textarea name="body" id="body">{{ request.form['severity'] or symptom['severity'] }}</textarea>
+    <input type="submit" value="Save">
+  </form>
+  <hr>
+  <form action="{{ url_for('symptom.delete', id=symptom['id']) }}" method="post">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+  </form>
+{% endblock %}

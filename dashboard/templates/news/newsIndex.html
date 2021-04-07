@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+  {% block header %}
+  <!--
+    {% if g.user %}
+      <h1>{% block title %}Trips{% endblock %}</h1>
+      <a class="action" href="{{ url_for('trip.create') }}">New</a>
+    {% endif %}-->
+  {% endblock %}
+
+{% block content %}
+  <!--news render-->
+  <h1>News</h1>
+  <a class="action" href="{{ url_for('news.create') }}">New news</a>
+  {% for news in newss %}
+    {% if g.user['id'] == news['author_id'] %}
+        <hr>
+        <article class="news">
+        <header>
+            <div>
+            
+            <div class="about">created on {{ news['created'].strftime('%Y-%m-%d') }}</div>
+            </div>
+            <a class="action" href="{{ url_for('news.update', id=news['id']) }}">Edit</a>
+        </header>
+            <p>People: {{ news['people'] }}</p>
+            <p class="body">Covid Test Result: {{ news['covid_test'] }}</p>
+            <p>Is Closely Contacted: {{ news['close_contact'] }}</p>
+        </article>
+        <hr>
+    {% endif %}
+    <!--{% if not loop.last %}
+    {% endif %} -->
+  {% endfor %}
+{% endblock %}

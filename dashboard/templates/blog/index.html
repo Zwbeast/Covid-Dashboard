@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+
+  {% block header %}
+  <!--
+    {% if g.user %}
+      <ul>
+        <li><a href="{{ url_for('blog.index') }}">Home</a></li>
+        <li><a href="">News</a></li>
+        <li><a href="{{ url_for('medicine.index') }}">Medicines</a></li>
+        <li><a href="">Trips</a></li>
+        <li><a href="">Takeouts</a></li>
+        <li><a href="">Doctor Visits</a></li>
+      </ul>
+
+      <a class="action" href="{{ url_for('blog.create') }}">New post</a>
+      <a class="action" href="{{ url_for('medicine.create') }}">New medicine</a>
+    {% endif %}-->
+  {% endblock %}
+
+<!--post render-->
+{% block content %}
+<!--
+  {% if g.user %}
+    <h1>Posts</h1>
+  {% endif %}-->
+  {% for post in posts %}
+    {% if g.user['id'] == post['author_id'] %}
+        <article class="post">
+        <header>
+            <div>
+            <h2>{{ post['title'] }}</h2>
+            <div class="about">created on {{ post['created'].strftime('%Y-%m-%d') }}</div>
+            </div>
+            <a class="action" href="{{ url_for('blog.update', id=post['id']) }}">Edit</a>
+        </header>
+            <p class="body">{{ post['body'] }}</p>
+        </article>
+        <hr>
+    {% endif %}
+    <!--{% if not loop.last %}
+    {% endif %} -->
+  {% endfor %}
+
+
+  <!--medicine render-->
+  {% if g.user %}
+    <h1>Medicines</h1>
+  {% endif %}
+  {% for medicine in medicines %}
+    {% if g.user['id'] == medicine['author_id'] %}
+        <article class="medicine">
+        <header>
+            <div>
+            
+            <div class="about">created on {{ medicine['created'].strftime('%Y-%m-%d') }}</div>
+            </div>
+            <a class="action" href="{{ url_for('medicine.update', id=medicine['id']) }}">Edit</a>
+        </header>
+            <p>Medicine Name: {{ medicine['med_name'] }}</p>
+            <p class="body">Direction: {{  medicine['direction'] }}</p>
+        </article>
+        <hr>
+    {% endif %}
+    <!--{% if not loop.last %}
+    {% endif %} -->
+  {% endfor %}
+
+  <!--trip render-->
+  {% if g.user %}
+    <h1>Trips</h1>
+  {% endif %}
+  {% for trip in trips %}
+    {% if g.user['id'] == trip['author_id'] %}
+        <article class="trip">
+        <header>
+            <div>
+            
+            <div class="about">created on {{ trip['created'].strftime('%Y-%m-%d') }}</div>
+            </div>
+            <a class="action" href="{{ url_for('trip.update', id=trip['id']) }}">Edit</a>
+        </header>
+            <p>Trip Destination: {{ trip['destination'] }}</p>
+            <p class="body">Start_date: {{ trip['s_date'] }}</p>
+            <p class="body">End_date: {{ trip['e_date'] }}</p>
+            <p class="body">People With: {{ trip['people'] }}</p>
+        </article>
+        <hr>
+    {% endif %}
+    <!--{% if not loop.last %}
+    {% endif %} -->
+  {% endfor %}
+
+  <!--takeout render-->
+  {% if g.user %}
+    <h1>Takeouts</h1>
+  {% endif %}
+  {% for takeout in takeouts %}
+    {% if g.user['id'] == takeout['author_id'] %}
+        <article class="takeout">
+        <header>
+            <div>
+            
+            <div class="about">created on {{ takeout['created'].strftime('%Y-%m-%d') }}</div>
+            </div>
+            <a class="action" href="{{ url_for('takeout.update', id=takeout['id']) }}">Edit</a>
+        </header>
+            <p>Take out Restaurant Name: {{ takeout['rest_name'] }}</p>
+            <p class="body">Order Date: {{ takeout['order_date'] }}</p>
+            <p class="body">Restaurant Address: {{ takeout['rest_address'] }}</p>
+        </article>
+        <hr>
+    {% endif %}
+    <!--{% if not loop.last %}
+    {% endif %} -->
+  {% endfor %}
+
+  <!--doctor render-->
+  {% if g.user %}
+    <h1>Dcotor Visits</h1>
+  {% endif %}
+  {% for doctor in doctors %}
+    {% if g.user['id'] == doctor['author_id'] %}
+        <article class="doctor">
+        <header>
+            <div>
+              <div class="about">created on {{ doctor['created'].strftime('%Y-%m-%d') }}</div>
+            </div>
+            <a class="action" href="{{ url_for('doctor.update', id=doctor['id']) }}">Edit</a>
+        </header>
+            <p>Doctor Visit Type: {{ doctor['doc_type'] }}</p>
+            <p class="body">Dcotor Visit Date: {{ doctor['doc_date'] }}</p>
+            <p class="body">Doctor Visit Address: {{ doctor['doc_address'] }}</p>
+        </article>
+        <hr>
+    {% endif %}
+    <!--{% if not loop.last %}
+    {% endif %} -->
+  {% endfor %}
+
+  <!--news render-->
+  {% if g.user %}
+    <h1>Symptoms</h1>
+  {% endif %}
+  {% for symptom in symptoms %}
+    {% if g.user['id'] == symptom['author_id'] %}
+        <article class="news">
+        <header>
+            <div>
+            
+            <div class="about">created on {{ symptom['created'].strftime('%Y-%m-%d') }}</div>
+            </div>
+            <a class="action" href="{{ url_for('symptom.update', id=symptom['id']) }}">Edit</a>
+        </header>
+            <p>Symptom: {{ symptom['symptom_name'] }}</p>
+            <p class="body">Symptom Start Date: {{ symptom['s_date'] }}</p>
+            <p>Severity: {{symptom['severity']}}</p>
+        </article>
+        <hr>
+    {% endif %}
+    <!--{% if not loop.last %}
+    {% endif %} -->
+  {% endfor %}
+
+  <!--news render-->
+  {% if g.user %}
+    <h1>News</h1>
+  {% endif %}
+  {% for news in newss %}
+    {% if g.user['id'] == news['author_id'] %}
+        <article class="news">
+        <header>
+            <div>
+            
+            <div class="about">created on {{ news['created'].strftime('%Y-%m-%d') }}</div>
+            </div>
+            <a class="action" href="{{ url_for('news.update', id=news['id']) }}">Edit</a>
+        </header>
+            <p>People: {{ news['people'] }}</p>
+            <p class="body">Covid Test Result: {{ news['covid_test'] }}</p>
+            <p>Is Closely Contacted: {{news['close_contact']}}</p>
+        </article>
+        <hr>
+    {% endif %}
+    <!--{% if not loop.last %}
+    {% endif %} -->
+  {% endfor %}
+{% endblock %}

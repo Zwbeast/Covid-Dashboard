@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New Takeouts{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="title">Takeout Restaurant Name</label>
+    <input name="title" id="title" value="{{ request.form['title'] }}" required>
+    <label for="takeoutOrderDate">Takeout Order Date</label>
+    <input name="takeoutOrderDate" id="takeoutOrderDate" value="{{ request.form['takeoutOrderDate'] }}" required>
+    <label for="body">Takeout Restaurant Address</label>
+    <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}
