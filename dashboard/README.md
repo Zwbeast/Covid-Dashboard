@@ -1,5 +1,7 @@
 # Covid-Dashboard
 
+## Description
+
 Mary is a GWU student. She is very concerned with COVID. She wants to have an app that she can monitor her health status for any sign of COVID. Among other features, she wants to be able to:
 - Log for any symptom related to COVID that she may have experimented, e.g., fever, coughing, etc. For instance, on Dec 1st, 10:00 AM EST, Mary measured her temperature and found out that the was 80F. On Dec 2nd, Mary had a cough that was upsetting her (you can use https://melbentgroup.com.au/wp-content/uploads/2015/10/MEG-Cough-Severity-Index-CSI.pdf for cough severity values)
 - Sync with her fitbit, iphone, or Apple Watch so she could have in a single app not only her own diagnostic but also her activities such as running, steps per day, etc.
@@ -11,3 +13,27 @@ Mary is a GWU student. She is very concerned with COVID. She wants to have an ap
 - Finally, Mary wants to have access to her dashboard indicating the like hood she was exposed to COVID given all the information she has collected about her life style.
 
 Students are free to add new capabilities to the app.
+
+## How to run:
+
+on Mac:
+```
+export FLASK_APP=dashboard
+export FLASK_ENV=development
+flask init-db
+flask run
+```
+On Windows:
+```
+set FLASK_APP=dashboard
+set FLASK_ENV=development
+flask init-db
+flask run
+```
+
+## Use Case Diagram
+<img src="https://i.ibb.co/GVyH1MC/Picture1.png" alt="Picture1" border="0" width="800" height="800">
+
+## Domain Class Model
+<img src="https://i.ibb.co/NSNk5Sr/Picture2.png" alt="Picture2" border="0" width="800" height="800">
+Have fun :)
