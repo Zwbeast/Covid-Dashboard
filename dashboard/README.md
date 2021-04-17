@@ -11,4 +11,3 @@ Mary is a GWU student. She is very concerned with COVID. She wants to have an ap
 •	Finally, Mary wants to have access to her dashboard indicating the like hood she was exposed to COVID given all the information she has collected about her life style.
 
 Students are free to add new capabilities to the app.
-![image](https://user-images.githubusercontent.com/22800759/115125527-b7a6ba00-9f96-11eb-838d-d941c4c4f2c7.png)
