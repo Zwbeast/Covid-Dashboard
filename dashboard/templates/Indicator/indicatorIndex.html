@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+  {% block header %}
+  <!--
+    {% if g.user %}
+      <h1>{% block title %}Trips{% endblock %}</h1>
+      <a class="action" href="{{ url_for('trip.create') }}">New</a>
+    {% endif %}-->
+  {% endblock %}
+
+{% block content %}
+
+  <!--doctor visit render-->
+  <h1>Indicator</h1>
+  <hr>
+
+        <article class="indicator">
+        <header>
+        </header>
+            <p>Doctors: {{ doctors_counts[0][0] }}</p>
+            <p>Trips: {{ trip_counts[0][0] }}</p>
+            <p>Medicine: {{ medicine_counts[0][0] }}</p>
+            <p>Symptoms: {{ symptom_counts[0][0] }}</p>
+            <p>Takeout: {{ takeout_counts[0][0] }}</p>
+            <p>Total Count: {{ indicators }}</p>
+            <input onclick="myFunction()" type="submit" value="Calculate">
+            <p id="result" style="font-weight: bold;"></p>
+        </article>
+  <hr>
+
+  <script>
+    function myFunction() {
+      document.getElementById("result").innerHTML = "Possibility: {{ possibility }}";
+    }
+  </script>
+{% endblock %}

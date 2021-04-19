@@ -13,9 +13,10 @@
   <!--symptom render-->
   <h1>Symptoms</h1>
   <a class="action" href="{{ url_for('symptom.create') }}">New symptom</a>
+  <hr>
   {% for symptom in symptoms %}
     {% if g.user['id'] == symptom['author_id'] %}
-        <hr>
+
         <article class="symptom">
         <header>
             <div>

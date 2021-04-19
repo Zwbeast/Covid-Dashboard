@@ -13,9 +13,9 @@
   <!--doctor visit render-->
   <h1>Dcotor Visits</h1>
   <a class="action" href="{{ url_for('doctor.create') }}">New doctor visit</a>
+  <hr>
   {% for doctor in doctors %}
     {% if g.user['id'] == doctor['author_id'] %}
-        <hr>
         <article class="doctor">
         <header>
             <div>

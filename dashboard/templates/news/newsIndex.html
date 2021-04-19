@@ -12,9 +12,10 @@
   <!--news render-->
   <h1>News</h1>
   <a class="action" href="{{ url_for('news.create') }}">New news</a>
+  <hr>
   {% for news in newss %}
     {% if g.user['id'] == news['author_id'] %}
-        <hr>
+
         <article class="news">
         <header>
             <div>

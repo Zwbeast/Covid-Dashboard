@@ -45,6 +45,7 @@
   <!--medicine render-->
   {% if g.user %}
     <h1>Medicines</h1>
+    <hr>
   {% endif %}
   {% for medicine in medicines %}
     {% if g.user['id'] == medicine['author_id'] %}
@@ -68,6 +69,7 @@
   <!--trip render-->
   {% if g.user %}
     <h1>Trips</h1>
+    <hr>
   {% endif %}
   {% for trip in trips %}
     {% if g.user['id'] == trip['author_id'] %}
@@ -93,6 +95,7 @@
   <!--takeout render-->
   {% if g.user %}
     <h1>Takeouts</h1>
+    <hr>
   {% endif %}
   {% for takeout in takeouts %}
     {% if g.user['id'] == takeout['author_id'] %}
@@ -117,6 +120,7 @@
   <!--doctor render-->
   {% if g.user %}
     <h1>Dcotor Visits</h1>
+    <hr>
   {% endif %}
   {% for doctor in doctors %}
     {% if g.user['id'] == doctor['author_id'] %}
@@ -140,6 +144,7 @@
   <!--news render-->
   {% if g.user %}
     <h1>Symptoms</h1>
+    <hr>
   {% endif %}
   {% for symptom in symptoms %}
     {% if g.user['id'] == symptom['author_id'] %}
@@ -164,6 +169,7 @@
   <!--news render-->
   {% if g.user %}
     <h1>News</h1>
+    <hr>
   {% endif %}
   {% for news in newss %}
     {% if g.user['id'] == news['author_id'] %}

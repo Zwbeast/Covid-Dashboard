@@ -15,9 +15,9 @@
   <a class="action" href="https://www.expedia.com/user/signin?ckoflag=0&uurl=e3id%3Dredr%26rurl%3D%2F">Expedia</a>
   <a class="action" href="https://account.booking.com/sign-in?op_token=EgVvYXV0aCLdAgoUdk8xS2Jsazd4WDl0VW4yY3BaTFMSCWF1dGhvcml6ZRo1aHR0cHM6Ly9zZWN1cmUuYm9va2luZy5jb20vbG9naW4uaHRtbD9vcD1vYXV0aF9yZXR1cm4q_AFVcm9CbmY0S2J5X0xJUlk4NzRJOHowajBCUnJsa3BJU2t1eHFhamhnbEVZLWdtc1VMQmFmN0N1aWtCWlFnVTkyUU1VU0QwUksybjl2YldyMzhJeE9EeTJ6cGpscW9PaXYxNmJOd3hLeUs5bzdXTTd1ZGU4RmZxajg1Z3llZmhsRnFsNEpDVVd6YjNBVG5HeTF2cFJyUXdGWXpMb3BlWkVvcXJxdUFxRmVJYjZpZUZERUhzcm1VbUJPVjFrQURSSnM4ZTVteFY0MkdOX2NlTW9nd3R3MWlrYUtoVzRyT2RHbWZXYjZPZFhLSXlmZXg4ZjBxa0xjRDNWajhydDlCBGNvZGUqFgiaohgwlvvMpa3kJDoAQgBYtou0gwY">Booking.com</a>
   <a class="action" href="{{ url_for('trip.create') }}">New trip</a>
+  <hr>
   {% for trip in trips %}
     {% if g.user['id'] == trip['author_id'] %}
-        <hr>
         <article class="trip">
         <header>
             <div>

@@ -64,4 +64,8 @@ def create_app(test_config=None):
     app.register_blueprint(symptom.bp)
     app.add_url_rule('/symptom', endpoint='index')
 
+    from . import indicator
+    app.register_blueprint(indicator.bp)
+    app.add_url_rule('/indicator', endpoint='index')
+
     return app

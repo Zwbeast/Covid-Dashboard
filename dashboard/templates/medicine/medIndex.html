@@ -13,9 +13,10 @@
   <!--medicine render-->
   <h1>Medicines</h1>
   <a class="action" href="{{ url_for('medicine.create') }}">New medicine</a>
+  <hr>
   {% for medicine in medicines %}
     {% if g.user['id'] == medicine['author_id'] %}
-        <hr>
+
         <article class="medicine">
         <header>
             <div>

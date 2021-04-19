@@ -12,7 +12,7 @@ bp = Blueprint('news', __name__, url_prefix='/news')
 def index():
     db = get_db()
     newss = db.execute(
-        'SELECT n.id, people, covid_test, created, author_id, username'
+        'SELECT n.id, people, covid_test, close_contact, created, author_id, username'
         ' FROM news n JOIN user u ON n.author_id = u.id'
         ' ORDER BY created DESC'
     ).fetchall()

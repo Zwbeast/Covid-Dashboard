@@ -14,9 +14,10 @@
   <h1>Takeouts</h1>
   <a class="action" href="https://auth.uber.com/login/?breeze_local_zone=dca11&next_url=https%3A%2F%2Fwww.ubereats.com%2Flogin-redirect%2F%3Fmarketing_vistor_id%3Dcfcfa52e-0635-483d-bec3-46afed804ee5%26redirect%3D%252F&state=zlNzVuc_4TkkGNU72hJCoZf-V_nMBSowYLelVl9ObIE%3D">Uber eats</a>
   <a class="action" href="{{ url_for('takeout.create') }}">New takeout</a>
+  <hr>
   {% for takeout in takeouts %}
     {% if g.user['id'] == takeout['author_id'] %}
-        <hr>
+
         <article class="takeout">
         <header>
             <div>
