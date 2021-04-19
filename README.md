@@ -1,4 +1,4 @@
-# Covid-Dashboard
+# Covid-Dashboard (OOAD Final Project Spring2021)
 
 ## Description
 
